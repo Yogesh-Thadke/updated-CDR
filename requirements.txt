@@ -1,6 +1,7 @@
 flask==3.0.3
 pandas==2.2.2
-numpy>=1.26.4
+numpy==1.26.4
 werkzeug==3.0.3
 networkx==3.3
 reportlab==4.2.2
+gunicorn==21.2.0
