@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: cdr-analysis-system
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+```
+5. Scroll down → Click **"Commit new file"**
+
+---
+
+**For `requirements.txt`** (editing existing file):
+
+1. In your repo click on `requirements.txt`
+2. Click the **pencil icon** (Edit) top right
+3. Replace the contents with:
+```
+flask==3.0.3
+pandas==2.2.2
+numpy>=2.0.0
+werkzeug==3.0.3
+networkx==3.3
+reportlab==4.2.2
+gunicorn==21.2.0
