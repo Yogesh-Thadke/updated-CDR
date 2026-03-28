@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CDR Analysis System — Login</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    background: #0a0e1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', sans-serif;
+    background-image: radial-gradient(ellipse at 20% 50%, #1a2744 0%, transparent 50%),
+                      radial-gradient(ellipse at 80% 20%, #0d2137 0%, transparent 40%);
+  }
+  .login-box {
+    background: #111827;
+    border: 1px solid #1e3a5f;
+    border-radius: 16px;
+    padding: 48px 40px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 0 60px rgba(0,100,255,0.08);
+  }
+  .logo {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .logo-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #1d4ed8, #0ea5e9);
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+  .logo h1 { color: #f1f5f9; font-size: 22px; font-weight: 700; }
+  .logo p { color: #64748b; font-size: 13px; margin-top: 4px; }
+  .flash-error {
+    background: rgba(220,38,38,0.1);
+    border: 1px solid rgba(220,38,38,0.3);
+    color: #fca5a5;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  .form-group { margin-bottom: 20px; }
+  label { display: block; color: #94a3b8; font-size: 13px; margin-bottom: 6px; font-weight: 500; }
+  input {
+    width: 100%;
+    padding: 11px 14px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: #f1f5f9;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input:focus { border-color: #3b82f6; }
+  .btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #1d4ed8, #0ea5e9);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    margin-top: 8px;
+  }
+  .btn:hover { opacity: 0.9; }
+  .hint {
+    text-align: center;
+    color: #475569;
+    font-size: 12px;
+    margin-top: 20px;
+  }
+  .hint span { color: #64748b; }
+</style>
+</head>
+<body>
+<div class="login-box">
+  <div class="logo">
+    <div class="logo-icon">🔍</div>
+    <h1>CDR Analysis System</h1>
+    <p>Law Enforcement Intelligence Platform</p>
+  </div>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="flash-{{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+  <form method="POST">
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" name="username" placeholder="Enter your username" required autofocus>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" name="password" placeholder="Enter your password" required>
+    </div>
+    <button type="submit" class="btn">Sign In</button>
+  </form>
+  <div class="hint">Default: <span>admin</span> / <span>admin123</span></div>
+</div>
+</body>
+</html>
